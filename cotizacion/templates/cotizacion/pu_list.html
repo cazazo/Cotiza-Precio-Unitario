@@ -1,0 +1,43 @@
+{% extends 'cotizacion/base.html' %}
+{% block content %}
+<br><br>
+<h1>Lista de Precios Unitarios</h1>
+<h4>Total de Precios Unitarios: {{pus_list.count}}</h4><br>
+<h4><a href="{% url 'pu_new' %}">Nuevo Precio Unitario</a></h4><br>
+<div class="card">
+    {% for pu in pus_list %}
+    <div>
+        <div class="card-body">
+            <div class="card-header">
+
+                <h6> <a href="{% url 'pu_detail' pk=pu.pk %}">Item#: {{pu.id}} -
+                        {{pu.rendimiento.nombre}}
+                    </a></h6>
+            </div>
+            <!-- <h6 class="card-header"><strong> Materiales:</strong></h6>
+            <ul class="list-group">
+                {% for m in pu.material_id.all %}
+                <li class="list-group-item">{{m}} {{pu.cantidad}}</li>
+                {% endfor %}
+            </ul>
+            <h6 class="card-header"><strong>Mano de Obra:</strong></h6>
+            <ul class="list-group">
+                {% for mo in pu.mano_obra.all %}
+                <li class="list-group-item">{{mo}}</li>
+                {% endfor %}
+            </ul> -->
+            <h5 class="card-header"><strong>Valores:</strong></h5>
+            <ul class="list-group">
+                <li class="list-group-item">Valor Mano de Obra: {{pu.valor_mo|floatformat:2}}bs.</li>
+                <li class="list-group-item">Valor de Materiales: {{pu.valor_material|floatformat:2}}bs.</li>
+            </ul>
+            <h4 class="card-header"><strong>Valor total: {{pu.get_total|floatformat:2}}bs.</strong></h4>
+            </ul>
+        </div>
+
+    </div>
+
+    {% endfor %}
+</div>
+
+{% endblock %}

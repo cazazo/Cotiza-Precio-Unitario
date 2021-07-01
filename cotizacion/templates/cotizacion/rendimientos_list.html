@@ -1,0 +1,20 @@
+{% extends 'cotizacion/base.html' %}
+{% block content %}
+<br><br>
+<h1>Lista de Rendimientos</h1>
+<h4>Total de Rendimientos: {{rendimientos_list.count}}</h4><br>
+<h4><a href="{% url 'rendimientos_new' %}">Cadastrar Rendimiento</a></h4><br>
+<div class="card">
+    <div class="card-body">
+        <div>
+            <ul class="list-group">
+                {% for rendimiento in rendimientos_list %}
+                <li class="list-group-item"><a
+                        href="{% url 'rendimiento_detail' pk=rendimiento.pk %}">{{rendimiento.nombre}}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+</div>
+{% endblock %}

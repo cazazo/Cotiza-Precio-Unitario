@@ -1,0 +1,17 @@
+{% extends 'cotizacion/base.html' %}
+{% block content %}
+<br><br>
+<h2>Detalle del Rendimiento: </h2><br>
+<h4><strong>Nombre: </strong>{{rendimientos.nombre}}</h4>
+<br>
+<div class="card">
+    <div class="card-body">
+        <ul class="list-group">
+            <li class="list-group-item"><strong>Descripción: </strong>{{rendimientos.descripcion}}</li>
+            <li class="list-group-item"><strong>Unidades por Jornal:
+                </strong>{{rendimientos.unidades_jornal|floatformat}}</li>
+        </ul>
+    </div>
+</div>
+
+{% endblock %}

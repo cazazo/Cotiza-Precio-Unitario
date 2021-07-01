@@ -1,0 +1,19 @@
+{% extends 'cotizacion/base.html' %}
+{% block content %}
+<br><br>
+<h1>Lista de Clientes</h1>
+<h4>Total de Clientes: {{clientes_list.count}}</h4><br>
+<h4><a href="{% url 'clientes_new' %}">Ingresar Cliente</a></h4><br>
+<div class="card">
+    <div class="card-body">
+        <div>
+            <ul class="list-group">
+                {% for cliente in clientes_list %}
+                <li class="list-group-item"><a href="{% url 'cliente_detail' pk=cliente.pk %}">{{cliente.nombre}}</a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}

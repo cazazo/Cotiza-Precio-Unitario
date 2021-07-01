@@ -1,0 +1,49 @@
+{% extends 'cotizacion/base.html' %}
+{% load mathfilters %}
+{% block content %}
+
+<br><br>
+<h1>Detalle del Precio Unitario</h1><br>
+{% for p in pus_list %}
+<h3>{{p.rendimiento}}</h3>
+{% endfor %}
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-header">Total de Materiales: {{pu_list.count}}</h4>
+
+        {% for pu in pu_list %}
+        <ul class="list-group">
+            {% with vm=pu.material_id.precio ctd=pu.cantidad%}
+            <li class="list-group-item">{{pu}} - cantidad: {{pu.cantidad}} </li>
+            <ul class="list-group">
+                <li class="list-group-item">Valor Unitario del Material: {{vm|floatformat:2}}bs.</li>
+            </ul>
+            {% endwith %}
+            <!-- {% for m in pu.material_id.all %}
+            <p>{{m}} {{pu.material_id.cantidad}} </p>
+            {% endfor %} -->
+        </ul>
+        {% endfor %}
+
+        <br>
+        <h4 class="card-header">Total de M.O.: {{mo_list.count}}</h4>
+        {% for p in pus_list%}
+        <h5 class="card-header">Rendimiento/Jornal:
+            {{p.rendimiento.unidades_jornal|floatformat}}</h5>
+        {% endfor %}
+        {% for mo in mo_list %}
+
+        <ul class="list-group">
+            <li class="list-group-item">Cargo: {{mo.manoobra_id.cargo}}</li>
+            <ul class="list-group">
+                <li class="list-group-item">Valor Mano de Obra Unitaria: {{mo.pumo_id.valor_mo|floatformat:2}}bs.</li>
+            </ul>
+        </ul>
+        <h6 class="card-header">Valor Mano de Obra Jornal: {{mo.valor_jornal|floatformat:2}}bs.</h6>
+        {% endfor %}
+        {% for p in pus_list %}
+        <h5 class="card-header"><strong>Precio Unitario: {{p.get_total|floatformat:2}}bs.</strong></h5>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

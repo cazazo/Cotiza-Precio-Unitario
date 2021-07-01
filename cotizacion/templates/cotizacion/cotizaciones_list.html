@@ -1,0 +1,25 @@
+{% extends 'cotizacion/base.html' %}
+{% block content %}
+<br><br>
+<h1>Lista de Cotizaciones</h1>
+<h4>Total de Cotizaciones: {{cotizaciones_list.count}}</h4><br>
+<h4><a href="{% url 'cotizaciones_new' %}">Neuva Cotización</a></h4><br>
+<div class="card">
+    <div class="card-body">
+        {% for cotizacion in cotizacion_list %}
+        <div class="">
+            <ul class="list-group">
+                <li class="list-group-item"><a href="{% url 'cotizacion_detail' pk=cotizacion.pk %}">Cotización#:
+                        {{cotizacion.id}} -
+                        Cliente: {{cotizacion.cliente_id.nombre}}
+                    </a>
+                    <h5><strong>Valor total: {{cotizacion.get_valor_total|floatformat:2}}bs.</strong></h5>
+                </li>
+            </ul>
+
+        </div>
+
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'cotizacion/base.html' %}
+{% block content %}
+
+<h2>Detalle de la Cotización:</h2><br>
+<h4><strong> Cotización #: {{cotizaciones.id}}</strong></h4>
+<br>
+<div class="centerstage">
+
+    <ul>
+        {% for pu in cotizaciones.pus.all %}
+        <li><strong>{{pu}} </strong></li><br>
+        {%endfor%}
+    </ul>
+</div>
+
+{% endblock %}

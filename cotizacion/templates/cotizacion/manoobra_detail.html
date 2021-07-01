@@ -1,0 +1,21 @@
+{% extends 'cotizacion/base.html' %}
+{% block content %}
+{% load mathfilters %}
+<br><br>
+<h2>Detalle de Mano de Obra: </h2><br>
+<div class="card">
+    <div class="card-body">
+
+        <h4 class="card-header"><strong>Cargo: </strong>{{manoobra.cargo}}</h4>
+
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item"><strong>Salario Mensual: </strong>bs.{{manoobra.salario|floatformat:2}}</li>
+            <li class="list-group-item"><strong>Salario por Hora: </strong>bs.{{manoobra.salario|div:208|floatformat:2}}
+            </li>
+            <li class="list-group-item"><strong>Salario por Jornal:
+                </strong>bs.{{manoobra.salario|div:26|floatformat:2}}
+            </li>
+        </ul>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'cotizacion/base.html' %}
+{% block content %}
+<br><br>
+<h1>Lista de Items</h1>
+<h4>Total de Items: {{cotiza_list.count}}</h4><br>
+{% for c in cot_list %}
+<h4>Total de Items: {{c}}</h4>
+
+{% endfor %}
+
+<div class="card ">
+    <div class="card-body">
+        <ul class="list-group">
+            {% for cotiza in cotiza_list %}
+            <li class="list-group-item">{{cotiza.pu_id}}
+                - Cantidad: {{cotiza.cantidad}}
+                - Valor Total del Item: {{cotiza.get_total|floatformat:2}}bs</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+</div>
+{% endblock %}

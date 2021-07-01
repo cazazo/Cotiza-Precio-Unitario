@@ -1,0 +1,18 @@
+{% extends 'cotizacion/base.html' %}
+{% block content %}
+<br><br>
+<h2>Detalle del Material: </h2>
+<br>
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-header"><strong>Item: </strong>{{materiales.material_nombre}}</h4>
+        <ul class="list-group">
+            <li class="list-group-item"><strong>Marca: </strong>{{materiales.marca}}</li>
+            <li class="list-group-item"><strong>Descripción: </strong>{{materiales.descripcion}}</li>
+            <li class="list-group-item"><strong>Unidad: </strong>{{materiales.unidad}}</li>
+            <li class="list-group-item"><strong>Precio: </strong>{{materiales.precio|floatformat:2}} bs</li>
+        </ul>
+    </div>
+</div>
+
+{% endblock %}

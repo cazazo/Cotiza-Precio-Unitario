@@ -1,0 +1,42 @@
+{% extends 'cotizacion/base.html' %}
+{% block content %}
+<br><br>
+<div class="card">
+    <div class="card-body">
+        <div class="card-text">
+            <h1 class="card-header">Versión <strong>beta</strong></h1>
+            <h4 class="card-header"><strong> Cotiza </strong>- Sitema de Cotizaciones y Análisis de Precio Unitario para
+                Instalaciones Eléctricas
+            </h4>
+        </div>
+        <br>
+        <h6 class="card-body">Bien venido al Sistema de cotizaciones, un sitio web desarrollado para
+            el proyecto final de grado en Técnico Supero de la carrera de Electricidad
+            Industrial.
+        </h6>
+
+        <h5 class="card-body"> <strong>Universitario: </strong>Cristiano Santos de Carvalho</h5>
+        <br>
+        {% if user.is_authenticated %}
+        <h3 class="card-header">Resumen de Registros en la Base de Datos:</h3>
+        <div class="homelist" style="font-size:1.5em">
+            <ul class="list-group">
+                <li class="list-group-item"><strong>Cotizaciones: {{ct}}</strong></li>
+                <li class="list-group-item"><strong>Clientes: {{cl}}</strong></li>
+                <li class="list-group-item"><strong>Materiales: {{m}}</strong></li>
+                <li class="list-group-item"><strong>Mano de Obra: {{mo}}</strong></li>
+                <li class="list-group-item"><strong>Rendimientos: {{rd}}</strong></li>
+                <li class="list-group-item"><strong>Precios Unitarios: {{pu}}</strong></li>
+
+            </ul>
+        </div>
+        {% else %}
+        <div class="card-subtitle">
+            <h6>Para ingresar al Sistema, hace el <a href="{% url 'login' %}">Login</a>!</h6>
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+
+{% endblock %}

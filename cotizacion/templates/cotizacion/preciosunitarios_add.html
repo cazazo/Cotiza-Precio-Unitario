@@ -1,0 +1,40 @@
+{% extends 'cotizacion/base.html' %}
+{% block content %}
+<br><br>
+
+<h1>Adicionar Precio Unitario</h1>
+<form action="." method="post">
+    {% csrf_token %}
+    <div>
+        {{ form.as_p }}
+    </div>
+    <legend>Adicionar Materiales</legend>
+    {{ pumaterial_form.management_form }}
+    {{ pumaterial_form.non_form_errors }}
+    {% for form in pumaterial_form %}
+    {{ form.as_p }}
+    <div>
+        {{ form.description.errors }}
+        {{ form.description.label_tag }}
+        {{ form.description }}
+    </div>
+    {% endfor %}
+    <legend>Adicionar Mano de Obra</legend>
+    {{ pumanoobra_form.management_form }}
+    {{ pumanoobra_form.non_form_errors }}
+    {% for form in pumanoobra_form %}
+    {{ form.as_p }}
+    <div>
+        {{ form.number.errors }}
+        {{ form.number.label_tag }}
+        {{ form.number }}
+        {{ form.description.errors }}
+        {{ form.description.label_tag }}
+        {{ form.description }}
+    </div>
+    {% endfor %}
+    <input type="submit" value="Adicionar" class="btn btn-secondary" />
+</form>
+
+
+{% endblock %}

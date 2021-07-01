@@ -1,0 +1,9 @@
+{% extends 'cotizacion/base.html' %}
+{% block content %}
+<h1>Nuevo Item</h1>
+<form class="item-form" method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button class="save btn btn-defaut" type="btn btn-secondary">Guardar</button>
+</form>
+{% endblock %}

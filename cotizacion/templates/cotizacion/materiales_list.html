@@ -1,0 +1,19 @@
+{% extends 'cotizacion/base.html' %}
+{% block content %}
+<br><br>
+<h1>Lista de Materiales</h1>
+<h4>Total de Materiales: {{materiales_list.count}}</h4><br>
+<h4><a href="{% url 'materiales_new' %}">Cadastrar Material</a></h4><br>
+<div class="card">
+    <div class="card-body">
+        <ul class="list-group">
+            {% for material in materiales_list %}
+            <li class="list-group-item"><a href="{% url 'material_detail' pk=material.pk %}">
+                    {{material.material_nombre}} - {{material.marca}},
+                    Precio: bs.{{material.precio|floatformat:2}} Unidad: {{material.unidad}} </a></li>
+            {% endfor %}
+        </ul>
+    </div>
+
+</div>
+{% endblock %}

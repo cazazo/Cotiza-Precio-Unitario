@@ -1,0 +1,28 @@
+{% extends 'cotizacion/base.html' %}
+{% block content %}
+<br><br>
+<div class="card">
+    <div class="card-body">
+        <h2 class="card_heder">Porfavor hace tu Login:</h2>
+        <br>
+        <h4>Hay que ser cadastrado, favor verificar con el Administrador del Sitio</h4>
+        <br>
+        {% if form.errors %}
+        <p>Your usuario y/o contraseña no encontrado! Favor intentar otra vez.</p>
+        {% endif %}
+        <form action="{% url 'login' %}" method="POST">
+            {% csrf_token %}
+
+            <div class="mb-3">
+                <input type="text" class="form-control" name="username" placeholder="Usuario">
+            </div>
+            <div class="mb-3">
+                <input type="password" class="form-control" name="password" placeholder="Contraseña">
+            </div><br>
+            <button type="submit" class="btn btn-secondary">Login</button>
+
+
+        </form>
+    </div>
+</div>
+{% endblock %}

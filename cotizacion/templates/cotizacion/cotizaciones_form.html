@@ -1,0 +1,26 @@
+{% extends 'cotizacion/base.html' %}
+{% block content %}
+<br><br>
+<h1>Adicionar Cotización:</h1>
+<form action="." method="POST">
+    {% csrf_token %}
+    <div>
+        {{ form.as_p }}
+    </div>
+    <legend>Adicionar Materiales</legend>
+    {{ puitemcotiza_form.management_form }}
+    {{ puitemcotiza_form.non_form_errors }}
+    {% for form in puitemcotiza_form %}
+    {{ form.as_p }}
+    <div>
+        {{ form.description.errors }}
+        {{ form.description.label_tag }}
+        {{ form.description }}
+    </div>
+    {% endfor %}
+
+    <input type="submit" value="Adicionar" class="btn btn-secondary" />
+</form>
+
+
+{% endblock %}

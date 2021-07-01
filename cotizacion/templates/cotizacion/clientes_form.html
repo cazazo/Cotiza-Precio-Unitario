@@ -1,0 +1,10 @@
+{% extends 'cotizacion/base.html' %}
+{% block content %}
+<br><br>
+<h1>Nuevo Cliente</h1>
+<form class="cliente-form" method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button class="save btn btn-secondary" type="submit">Guardar</button>
+</form>
+{% endblock %}

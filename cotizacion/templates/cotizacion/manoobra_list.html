@@ -1,0 +1,21 @@
+{% extends 'cotizacion/base.html' %}
+{% block content %}
+<br><br>
+<h1>Lista de Mano de Obra</h1>
+<h4>Total de M.O.: {{manoobra_list.count}}</h4>
+<br>
+<h4><a href="{% url 'mo_new' %}">Cadastrar M.O.</a></h4><br>
+<div class="card">
+    <div class="card-body">
+        <div>
+            <ul class="list-group">
+                {% for mo in manoobra_list %}
+                <li class="list-group-item"><a href="{% url 'mo_detail' pk=mo.pk %}">{{mo.cargo}}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+
+</div>
+{% endblock %}
